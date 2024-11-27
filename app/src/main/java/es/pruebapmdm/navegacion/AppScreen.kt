@@ -6,7 +6,7 @@ sealed class AppScreen(
     object RegisterScreen: AppScreen("RegisterScreen")
     object WelcomeScreen : AppScreen("WelcomeScreen/{email}/{dni}") {
         /**
-         * Permite navegar directamente a la ruta del contacto que se le pase.
+         * Permite navegar directamente a la ruta del contacto que se le pase, sin tener que hacerlo explicitamente a mano
          */
         fun createRoute(
             email: String,

@@ -54,7 +54,7 @@ import es.pruebapmdm.navegacion.AppScreen
 /**
  * Fucnion principal de la App.
  * Comrpuebo que sea un email, contraseña numerica y dni validos, anntes de activar el botón.
- * Una vez activo, se cambia de pantalla al hacer click,
+ * Una vez activo, se cambia de pantalla al hacer click, limpiando los datos de los texfields.
  */
 @Composable
 fun MainScreen(
@@ -101,7 +101,7 @@ fun MainScreen(
             password = password,
             passwordChange = {
                 password = it
-                isValidPassword = password.length > 8 && checkNumericPassword(password)
+                isValidPassword = password.length > 8 && checkNumericPassword(password) // Comprobar longitud y que son numeros
             },
             passwordVisible = isVisiblePassword,
             passwordVisibleChange = {
@@ -436,7 +436,7 @@ fun checkNumericPassword(password: String): Boolean{
  * Comprobar si un DNI es real y valido (Usado en una practica de ADA)
  */
 fun checkValidDni(dni: String): Boolean{
-    // Comprobar que el formato sean 8num + 1 letra
+    // Comprobar que el formato sean 8 num + 1 letra
     val dniRegex = "^[0-9]{8}[A-Za-z]$".toRegex()
     if (!dni.matches(dniRegex)) {
         return false
@@ -446,9 +446,7 @@ fun checkValidDni(dni: String): Boolean{
     val numero = dni.substring(0, 8).toLong()
     val letra = dni[8].uppercaseChar()
 
-
     val letrasValidas = listOf('T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E')
-
 
     val residuo = (numero % 23).toInt()
 

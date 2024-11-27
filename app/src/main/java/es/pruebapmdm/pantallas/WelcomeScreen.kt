@@ -70,6 +70,7 @@ fun WelcomeScreen(
 
         Spacer(Modifier.height(250.dp))
 
+        // Botón extra para usar un Toast
         ContinueButton(
             onClick = {
                 customToast(context, "Próximamente...")
